@@ -1,0 +1,72 @@
+<form [formGroup] ='service.form' class ='normal-form'>
+    <mat-grid-list cols="2" rowHeight="200px">
+        <mat-grid-tile>
+          <div class ="controles-container">
+            <div>
+            <input type ="hidden" formControlName="$key">
+
+           <mat-form-field>
+              <input formControlName="fullName" matInput placeholder="Full Name">
+              <mat-error> This value is manadatory</mat-error>
+           </mat-form-field>
+          
+                <mat-form-field>
+                    <input formControlName="email" matInput placeholder="Email">
+                 </mat-form-field>
+            </div>
+
+          <div>
+              <mat-form-field>
+                  <input formControlName="mobile" matInput placeholder="Mobile">
+               </mat-form-field>
+        
+           <mat-form-field>
+              <input formControlName="city" matInput placeholder="City">
+           </mat-form-field>
+          </div>
+
+            </div>
+        </mat-grid-tile>
+
+        <mat-grid-tile>
+        <div class ="controles-container">
+
+            <div class ="add-bottom-padding">
+                  <mat-radio-group  formControlMan="gender">
+                      <mat-radio-button value ="1">Male </mat-radio-button>
+                      <mat-radio-button value ="2">Female </mat-radio-button>
+                      <mat-radio-button value ="3">Other</mat-radio-button>
+                  </mat-radio-group>
+              </div>
+              <div>
+
+              <mat-form-field>
+                  <mat-select formCcontrolName="department" placeHolder ="Department">
+              
+                    <ng-container *ngFor ="let department of departments">
+                        <mat-option value ="{{department.id}}">{{department.value}}</mat-option>
+                    </ng-container>
+                  </mat-select>
+                </mat-form-field>
+
+                <mat-form-field>
+                    <input matInput [matDatepicker]="picker" placeholder="Choose a date">
+                    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                    <mat-datepicker #picker></mat-datepicker>
+                </mat-form-field>
+
+                <div class ="add-bottom-padding">
+                 <mat-checkbox formControlName="isPermanent"> Permanent Employee </mat-checkbox>
+                </div>
+
+              <div class ="button-row">
+                <button mat-raised-button color ="primary" type="submit" >Submit </button>
+                <button mat-raised-button color ="warn" type="submit"  (click)="onClear()">Clear </button>
+              </div>
+              
+              </div>
+        </div>
+          
+        </mat-grid-tile>
+      </mat-grid-list>
+</form>
